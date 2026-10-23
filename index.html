@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Física para Dummies | Propuesta para Casa Caridad</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1c30;--panel2:#102640;--text:#f2f7ff;--muted:#b8c9df;--cyan:#69e4ff;--gold:#ffd477;--violet:#b9a0ff;--line:#284462;--green:#9df0c4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% -10%,#183d61 0%,var(--bg) 55%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.68}
+a{color:var(--cyan)}
+.wrap{width:min(1120px,92vw);margin:auto}
+header{min-height:92vh;display:grid;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero{position:relative;z-index:2;padding:4.5rem 0 5rem}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;color:var(--cyan);font-size:.78rem;font-weight:800}
+h1{font-size:clamp(2.7rem,8vw,6.8rem);line-height:.98;letter-spacing:-.055em;margin:.8rem 0 1.4rem;max-width:900px}
+h1 span{color:var(--gold)}
+.lead{font-size:clamp(1.1rem,2.3vw,1.45rem);max-width:760px;color:#dce9f8}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+.pill{border:1px solid #42617f;border-radius:99px;padding:.45rem .85rem;color:#d8eaff;background:#0b1a2b}
+.cosmos{position:absolute;inset:0;width:100%;height:100%;opacity:.92;pointer-events:none}
+section{padding:5rem 0;border-bottom:1px solid #203650}
+.kicker{color:var(--cyan);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.75rem}
+h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.08;letter-spacing:-.035em;margin:.6rem 0 1.2rem}
+h3{font-size:1.22rem;line-height:1.25;margin:.1rem 0 .6rem}
+p{margin:.65rem 0;color:#d5e1f0}
+.intro{font-size:1.15rem;max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.card{background:linear-gradient(145deg,rgba(18,43,68,.94),rgba(10,25,42,.94));border:1px solid var(--line);border-radius:20px;padding:1.35rem;box-shadow:0 15px 45px #0002}
+.card .num{color:var(--gold);font-size:.8rem;font-weight:900;letter-spacing:.12em}
+.card p{font-size:.96rem}
+.callout{border-left:4px solid var(--gold);background:#17283a;padding:1.25rem 1.4rem;border-radius:0 16px 16px 0;margin:2rem 0}
+.callout strong{color:var(--gold)}
+.quote{font-size:clamp(1.45rem,3vw,2.5rem);font-weight:750;line-height:1.25;letter-spacing:-.025em;color:white;max-width:900px}
+.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.topic{display:flex;gap:1rem;align-items:flex-start;background:#0b1a2b;border:1px solid var(--line);border-radius:16px;padding:1.1rem}
+.topic svg{flex:0 0 42px;width:42px;height:42px;color:var(--cyan)}
+.topic ul{margin:.4rem 0 0;padding-left:1.15rem;color:var(--muted)}
+.topic li{margin:.25rem 0}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.7rem;margin-top:2rem}
+.step{counter-increment:step;padding:1.15rem;background:#0d2035;border:1px solid var(--line);border-radius:16px}
+.step:before{content:"0" counter(step);display:block;color:var(--gold);font-weight:900;font-size:1.25rem;margin-bottom:.5rem}
+.step p{font-size:.92rem}
+.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:1.7rem}
+.benefit{padding:1.1rem 1.2rem;border-radius:14px;background:#0d2035;border:1px solid var(--line)}
+.benefit h3:before{content:"✦";color:var(--gold);margin-right:.55rem}
+.timeline{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.timeline>div{padding:1.3rem;border-radius:18px;background:#102640;border:1px solid #355473}
+.timeline .big{font-size:2rem;font-weight:900;color:var(--gold)}
+ul.clean{padding-left:1.2rem;color:var(--muted)}
+ul.clean li{padding:.25rem 0}
+footer{padding:4rem 0 5rem;background:#050b13}
+.signature{font-size:1.4rem;font-weight:850;color:white}
+.small{font-size:.9rem;color:#9fb4cc}
+.btn{display:inline-block;margin-top:1.3rem;padding:.85rem 1.1rem;border-radius:12px;background:var(--gold);color:#102033;font-weight:850;text-decoration:none}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:none}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes dash{to{stroke-dashoffset:-1000}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+.orbit{transform-origin:500px 300px;animation:orbit 28s linear infinite}
+.orbit2{transform-origin:500px 300px;animation:orbit 19s linear infinite reverse}
+.blackhole{transform-origin:500px 300px;animation:pulse 5s ease-in-out infinite}
+.energy{stroke-dasharray:10 12;animation:dash 18s linear infinite}
+.star{animation:twinkle 3.2s ease-in-out infinite}
+.float{animation:drift 6s ease-in-out infinite}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps .step:last-child{grid-column:1/-1}}
+@media(max-width:560px){.grid,.topic-grid,.benefits,.timeline{grid-template-columns:1fr}.hero{padding:4rem 0}.steps{grid-template-columns:1fr}.steps .step:last-child{grid-column:auto}section{padding:3.6rem 0}.cosmos{opacity:.55}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media print{body{background:#fff;color:#111}.cosmos{display:none}header{min-height:auto}.hero{padding:2rem 0}section{break-inside:avoid;padding:2rem 0}.card,.topic,.step,.benefit,.timeline>div{background:#fff;color:#111;box-shadow:none;border-color:#bbb}p,.topic ul,.small{color:#333}.reveal{opacity:1;transform:none}footer{background:#fff;color:#111}}
+</style>
+</head>
+<body>
+<header>
+<svg class="cosmos" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs>
+ <radialGradient id="nebula"><stop stop-color="#3d8fb7" stop-opacity=".55"/><stop offset="1" stop-color="#07111f" stop-opacity="0"/></radialGradient>
+ <radialGradient id="hole"><stop offset="0" stop-color="#000"/><stop offset=".48" stop-color="#02050c"/><stop offset=".62" stop-color="#ffce77"/><stop offset=".68" stop-color="#7deaff"/><stop offset=".76" stop-color="#735bff" stop-opacity=".3"/><stop offset="1" stop-color="#07111f" stop-opacity="0"/></radialGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="750" cy="280" rx="430" ry="350" fill="url(#nebula)"/>
+<g fill="#eaf8ff">
+ <circle class="star" cx="80" cy="90" r="1.8"/><circle class="star" cx="210" cy="210" r="1.4"/><circle class="star" cx="340" cy="80" r="2"/><circle class="star" cx="850" cy="100" r="1.6"/><circle class="star" cx="920" cy="430" r="2"/><circle class="star" cx="720" cy="570" r="1.5"/><circle class="star" cx="120" cy="540" r="1.7"/><circle class="star" cx="590" cy="90" r="1.2"/><circle class="star" cx="420" cy="500" r="1.6"/><circle class="star" cx="965" cy="210" r="1.4"/><circle class="star" cx="285" cy="390" r="1.3"/>
+</g>
+<g class="blackhole" filter="url(#glow)"><circle cx="760" cy="300" r="180" fill="url(#hole)"/></g>
+<g class="orbit" fill="none" stroke="#7be8ff" stroke-opacity=".42"><ellipse cx="760" cy="300" rx="225" ry="83" stroke-width="1.6" transform="rotate(-25 760 300)"/><ellipse cx="760" cy="300" rx="260" ry="110" stroke-width="1" transform="rotate(25 760 300)"/></g>
+<path class="energy" d="M510 470 Q650 390 760 300 T1000 120" stroke="#ffd477" stroke-width="2" fill="none" opacity=".7"/>
+<g class="float"><circle cx="600" cy="170" r="5" fill="#ffd477"/><circle cx="600" cy="170" r="17" fill="none" stroke="#ffd477" stroke-opacity=".5"/></g>
+</svg>
+<div class="wrap hero">
+<div class="eyebrow">Una propuesta para Casa Caridad Valencia</div>
+<h1>FÍSICA <span>PARA DUMMIES</span></h1>
+<p class="lead">Un viaje por los misterios del universo. Una actividad de divulgación científica accesible, sorprendente y participativa, pensada para que cualquier persona pueda disfrutar de las grandes preguntas de la ciencia.</p>
+<div class="hero-meta"><span class="pill">Sin conocimientos previos</span><span class="pill">Sin exámenes ni deberes</span><span class="pill">Prueba piloto de 30 minutos</span><span class="pill">Sin coste específico para empezar</span></div>
+</div>
+</header>
+<main>
+<section>
+<div class="wrap reveal">
+<div class="kicker">01 · La idea</div>
+<h2>El universo es demasiado fascinante para dejarlo solo en manos de los científicos.</h2>
+<p class="intro">La propuesta de Rubén Sbarsky es acercar los grandes misterios de la física a los residentes mediante explicaciones claras, ejemplos cotidianos, imágenes, vídeos y preguntas que despierten la imaginación. No sería una clase académica: sería un espacio para escuchar, preguntar, sorprenderse, conversar y descubrir.</p>
+<div class="callout"><strong>La idea central:</strong> no hace falta saber matemáticas ni tener estudios científicos para disfrutar de preguntas extraordinarias. Hace falta una explicación comprensible y un entorno en el que preguntar sea siempre bienvenido.</div>
+<div class="grid">
+<div class="card"><div class="num">01 / CURIOSIDAD</div><h3>Preguntas que atrapan</h3><p>El tiempo, el espacio, los agujeros negros y el origen del universo despiertan preguntas que todos podemos hacernos.</p></div>
+<div class="card"><div class="num">02 / ACCESIBILIDAD</div><h3>Explicado sin complicaciones</h3><p>Lenguaje cotidiano, ritmo tranquilo, comparaciones sencillas y conceptos explicados paso a paso.</p></div>
+<div class="card"><div class="num">03 / CONVERSACIÓN</div><h3>Aprender juntos</h3><p>Los asistentes pueden escuchar, preguntar, compartir ideas o simplemente disfrutar de la sesión, sin obligación de intervenir.</p></div>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap reveal">
+<div class="kicker">02 · Por qué puede encajar</div>
+<h2>Una oportunidad para participar activamente en la vida del centro.</h2>
+<p class="intro">Soy residente de Casa Caridad y me gustaría aportar una actividad cultural a la comunidad de la que formo parte. La propuesta nace desde dentro y pretende complementar, nunca sustituir, el acompañamiento y las actividades que organiza el equipo profesional.</p>
+<p>Las circunstancias personales no deberían determinar qué preguntas puede explorar una persona ni qué conocimientos puede disfrutar. La divulgación científica puede ser una puerta abierta a nuevas ideas sin convertir el aprendizaje en una obligación.</p>
+<div class="quote">“No hay que saber física para preguntarse cómo funciona el universo. Hay que poder acercarse a ella sin miedo a no entender.”</div>
+</div>
+</section>
+<section>
+<div class="wrap reveal">
+<div class="kicker">03 · El viaje científico</div>
+<h2>Seis mundos fascinantes. Ningún conocimiento previo necesario.</h2>
+<p>Las sesiones serían independientes: cualquier residente podría incorporarse sin haber asistido a las anteriores. Los temas se ajustarían a los intereses y posibilidades reales del grupo.</p>
+<div class="topic-grid">
+<div class="topic"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.5"/><path d="M24 12v12l9 6" stroke="#ffd477" stroke-width="2.5" stroke-linecap="round"/><path d="M8 8l5 2M36 38l4 2" stroke="currentColor" stroke-width="2"/></svg><div><h3>El misterio del tiempo</h3><ul><li>¿Qué es el tiempo?</li><li>¿Pasa igual para todo el mundo?</li><li>¿Podemos viajar al futuro?</li><li>¿Por qué el tiempo puede transcurrir a distintas velocidades?</li></ul></div></div>
+<div class="topic"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="3" fill="#ffd477"/><ellipse cx="24" cy="24" rx="20" ry="8" stroke="currentColor" transform="rotate(-28 24 24)"/><ellipse cx="24" cy="24" rx="20" ry="8" stroke="currentColor" transform="rotate(45 24 24)"/><circle cx="40" cy="13" r="3" fill="#69e4ff"/></svg><div><h3>Viajes interestelares</h3><ul><li>¿A qué distancia están las estrellas?</li><li>¿Cuánto tardaríamos en llegar a otra?</li><li>¿Qué es la velocidad de la luz?</li><li>¿Cómo sería vivir años en una nave espacial?</li></ul></div></div>
+<div class="topic"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#15132b" stroke="#b9a0ff" stroke-width="1.5"/><circle cx="24" cy="24" r="12" fill="#05070d" stroke="#69e4ff" stroke-width="2"/><ellipse cx="24" cy="24" rx="21" ry="7" stroke="#ffd477" stroke-width="2" transform="rotate(-20 24 24)"/></svg><div><h3>Agujeros negros</h3><ul><li>¿Cómo puede la gravedad atrapar la luz?</li><li>¿Qué es el horizonte de sucesos?</li><li>¿Qué ocurriría al acercarnos demasiado?</li><li>¿Son aspiradoras cósmicas?</li></ul></div></div>
+<div class="topic"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 24L24 5M24 24L42 14M24 24L42 36M24 24L7 40M24 24L5 12" stroke="#69e4ff" stroke-width="1.6"/><circle cx="24" cy="24" r="5" fill="#ffd477"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-dasharray="3 4"/><circle cx="24" cy="24" r="21" stroke="currentColor" stroke-opacity=".55"/></svg><div><h3>El nacimiento del universo</h3><ul><li>¿Qué es el Big Bang?</li><li>¿Cómo sabemos que el universo se expande?</li><li>¿Cómo nacen estrellas y planetas?</li><li>¿Qué sabemos y qué sigue siendo un misterio?</li></ul></div></div>
+<div class="topic"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M7 24h13M28 24h13" stroke="currentColor" stroke-width="1.7"/><path d="M17 17l7 7-7 7M31 17l-7 7 7 7" stroke="#ffd477" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="21" stroke="currentColor" stroke-dasharray="2 4"/></svg><div><h3>Viajes al pasado y paradojas</h3><ul><li>¿Podríamos regresar al pasado?</li><li>¿Qué es la paradoja del abuelo?</li><li>¿Podemos cambiar la historia?</li><li>¿Qué es ciencia y qué es especulación?</li></ul></div></div>
+<div class="topic"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="6" fill="#ffd477"/><ellipse cx="24" cy="24" rx="21" ry="9" stroke="currentColor" transform="rotate(-35 24 24)"/><ellipse cx="24" cy="24" rx="21" ry="9" stroke="currentColor" transform="rotate(35 24 24)"/><circle cx="7" cy="12" r="2.5" fill="#69e4ff"/><circle cx="40" cy="17" r="2.5" fill="#b9a0ff"/></svg><div><h3>¿Estamos solos?</h3><ul><li>¿Qué necesita un planeta para ser habitable?</li><li>¿Qué son los exoplanetas?</li><li>¿Cómo se busca vida extraterrestre?</li><li>¿Qué sabemos realmente sobre la vida en el universo?</li></ul></div></div>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap reveal">
+<div class="kicker">04 · Cómo sería cada sesión</div>
+<h2>Una experiencia breve, visual y participativa.</h2>
+<p>Duración aproximada: <strong>30 a 45 minutos</strong>, adaptable a la atención y preferencias del grupo.</p>
+<div class="steps">
+<div class="step"><h3>Una pregunta</h3><p>Empezamos con una cuestión sorprendente que despierte la curiosidad.</p></div>
+<div class="step"><h3>Una explicación</h3><p>La idea se desarrolla con ejemplos de la vida cotidiana y pequeñas historias.</p></div>
+<div class="step"><h3>Un apoyo visual</h3><p>Imágenes, ilustraciones o vídeos breves cuando ayuden a comprender.</p></div>
+<div class="step"><h3>Conversación</h3><p>Preguntas y opiniones voluntarias, sin respuestas obligatorias.</p></div>
+<div class="step"><h3>Una idea final</h3><p>Un resumen sencillo y una pregunta que deje ganas de seguir explorando.</p></div>
+</div>
+<div class="callout"><strong>No sería una clase convencional:</strong> no habría exámenes, deberes, fórmulas complicadas ni obligación de participar. El objetivo es disfrutar y descubrir, no evaluar a nadie.</div>
+</div>
+</section>
+<section>
+<div class="wrap reveal">
+<div class="kicker">05 · Beneficios potenciales</div>
+<h2>Una actividad cultural que puede enriquecer la vida cotidiana.</h2>
+<div class="benefits">
+<div class="benefit"><h3>Estimulación intelectual</h3><p>Las preguntas invitan a imaginar, comparar ideas, relacionar conceptos y ejercitar la curiosidad.</p></div>
+<div class="benefit"><h3>Entretenimiento con contenido</h3><p>Una alternativa cultural de ocio con temas sorprendentes y accesibles.</p></div>
+<div class="benefit"><h3>Participación social</h3><p>Un punto de encuentro para conversar, escuchar a otras personas y compartir ideas.</p></div>
+<div class="benefit"><h3>Acceso a la cultura científica</h3><p>Conocimientos que quizá algunos residentes nunca tuvieron ocasión de explorar, sin barreras económicas ni académicas.</p></div>
+<div class="benefit"><h3>Confianza para preguntar</h3><p>Un ambiente sin exámenes puede ayudar a que las dudas se expresen sin temor a equivocarse.</p></div>
+<div class="benefit"><h3>Imaginación y pensamiento crítico</h3><p>Aprender a distinguir entre hechos, hipótesis y especulación mientras se exploran ideas fascinantes.</p></div>
+</div>
+<p class="small">Se trata de beneficios potenciales, no de resultados clínicos garantizados. La experiencia permitiría valorar si la actividad resulta interesante y útil para los residentes.</p>
+</div>
+</section>
+<section>
+<div class="wrap reveal">
+<div class="kicker">06 · Una propuesta realista</div>
+<h2>Empezar con poco. Evaluar. Decidir juntos.</h2>
+<div class="timeline">
+<div><div class="big">30 min</div><h3>Primera sesión piloto</h3><p>«¿Es posible viajar al futuro? El sorprendente misterio del tiempo». Un tema que permite introducir a Einstein, la velocidad de la luz y los viajes espaciales sin matemáticas.</p></div>
+<div><div class="big">0 €</div><h3>Sin inversión específica para empezar</h3><p>La propuesta no requiere laboratorio ni equipamiento especial. Se podría utilizar una sala y, si existe disponibilidad, una pantalla o televisor.</p></div>
+</div>
+<h3 style="margin-top:2rem">¿Qué necesitaría Casa Caridad?</h3>
+<ul class="clean">
+<li>Autorización para realizar una sesión de prueba.</li>
+<li>Un espacio tranquilo y un horario acordado.</li>
+<li>Una persona de referencia para coordinar la actividad.</li>
+<li>Si fuera posible, una pantalla o televisor para material visual.</li>
+</ul>
+<p>La participación sería voluntaria. Respetaría las normas de convivencia, el funcionamiento del centro y las indicaciones del equipo profesional. El contenido, la duración y la metodología se adaptarían a las necesidades reales del grupo.</p>
+</div>
+</section>
+<section>
+<div class="wrap reveal">
+<div class="kicker">07 · Valor para la institución</div>
+<h2>Complementar la atención integral con curiosidad, cultura y participación.</h2>
+<p>Casa Caridad trabaja para mejorar la calidad de vida de personas en situación de vulnerabilidad mediante acompañamiento y atención integral. Esta propuesta pretende complementar esa labor desde un ámbito cultural y educativo.</p>
+<p>No sustituye ninguna intervención profesional ni pretende resolver por sí sola dificultades personales o sociales. Su aportación es concreta: ofrecer un espacio adicional para el conocimiento, el diálogo, la curiosidad y el disfrute compartido.</p>
+<p>Al surgir de un residente, también puede abrir una oportunidad de participación activa en la vida del centro, siempre dentro de las posibilidades y normas que establezca Casa Caridad.</p>
+<div class="callout"><strong>Una prueba sencilla, voluntaria y evaluable.</strong> Al finalizar, se podrían recoger informalmente las impresiones de los participantes: si les gustó, qué les resultó más claro y qué otros temas querrían conocer. Casa Caridad decidiría después, sin compromiso, si tiene sentido continuar.</div>
+</div>
+</section>
+<section>
+<div class="wrap reveal">
+<div class="kicker">08 · La petición</div>
+<h2>Solo pido la oportunidad de probarlo.</h2>
+<p class="intro">Me gustaría explicar personalmente esta propuesta a la persona responsable de actividades, acompañamiento socioeducativo o coordinación del centro. Estoy dispuesto a escuchar recomendaciones y adaptar el proyecto.</p>
+<p>La intención no es imponer un programa cerrado, sino ofrecer una idea que podamos valorar conjuntamente y, si se considera adecuada, poner en práctica de forma sencilla.</p>
+<div class="quote">Todos tenemos derecho a seguir descubriendo el mundo, independientemente de nuestras circunstancias personales.</div>
+<p>Podemos hablar de agujeros negros, viajar mentalmente a otras galaxias, preguntarnos qué es el tiempo o imaginar cómo nació el universo. No hace falta ser científico para disfrutar de esas preguntas. A veces, basta con que alguien nos las plantee de una manera que podamos comprender.</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="eyebrow">Propuesta de actividad voluntaria</div>
+<p class="signature">Rubén Sbarsky</p>
+<p>Residente de Casa Caridad Valencia</p>
+<p class="small">Divulgación científica accesible · Física para Dummies · Propuesta sujeta a la valoración, autorización y coordinación de Casa Caridad.</p>
+<a class="btn" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Volver al comienzo ↑</a>
+</div>
+</footer>
+<script>
+(function(){
+  const sections=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){sections.forEach(el=>el.classList.add('visible'));return;}
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});
+  },{threshold:.12});
+  sections.forEach(el=>observer.observe(el));
+})();
+</script>
+</body>
+</html>
